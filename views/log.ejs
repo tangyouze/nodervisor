@@ -4,7 +4,7 @@
   <div class="main-container container">
     <div class="main wrapper clearfix">
 
-      <article>
+      <article id="log-display">
         <% if (typeof data.error != 'undefined') { %>
         <div class="alert alert-danger">
           <strong>Error!</strong>
@@ -16,9 +16,17 @@
             <h3><%= data.host.Name + ' - ' + process + ' (Std' + type + ')' %></h3>
 
             <button type="button" class="btn btn-labeled btn-danger super-action" data-action="stop"
-                    data-process="xx" data-host="111"><span class="btn-label"><i
-                  class="glyphicon glyphicon-minus-sign"></i></span>Stop
+                    data-process="<%= process %>" data-host="<%= host %>">
+              <span class="btn-label"><i class="glyphicon glyphicon-minus-sign"></i></span>
+              Stop
             </button>
+
+            <button type="button" class="btn btn-labeled btn-success super-action" data-action="start"
+                    data-process="<%= process %>" data-host="<%= host %>">
+              <span class="btn-label"><i class="glyphicon glyphicon-ok"></i></span>
+              Start
+            </button>
+
             <button type="button" id="refresh-toggle" class="btn btn-labeled btn-success active pull-right"
                     style="margin-top: -50px;"><span class="btn-label"><i
                   class="glyphicon glyphicon-refresh"></i></span><span class="btn-text">Refresh on</span></button>
@@ -80,6 +88,24 @@
       } else {
         refreshOn();
       }
+    });
+
+    $('#log-display').on('click', '.super-action', function () {
+      console.log('click');
+
+      var action = $(this).attr('data-action');
+      var process = $(this).attr('data-process');
+      var host = $(this).attr('data-host');
+
+      $.ajax({
+        url: '/ajax/supervisorctl',
+        type: 'get',
+        dataType: 'json',
+        data: ({host: host, action: action, process: process}),
+        success: function (data) {
+          console.log(data);
+        }
+      });
     });
   });
 </script>
