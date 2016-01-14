@@ -148,6 +148,10 @@ if (role == 'Admin') {
       }
       }
       %>
+      <button type="button" class="btn btn-labeled btn-success super-action" data-action="restart"
+              data-process="<%= processFullname %>" data-host="<%= host.idHost %>"><span class="btn-label"><i
+            class="glyphicon glyphicon-ok"></i></span>R
+      </button>
       <a href="/log/<%= host.idHost %>/<%= processFullname %>/out" class="btn btn-default"><i
           class="glyphicon glyphicon-tasks"></i></a>
     </td>
