@@ -15,6 +15,17 @@
           <div class="col-md-12">
             <h3><%= data.host.Name + ' - ' + process + ' (Std' + type + ')' %></h3>
 
+
+            <button type="button" id="refresh-toggle" class="btn btn-labeled btn-success active pull-right"
+                    style="margin-top: -50px;"><span class="btn-label"><i
+                  class="glyphicon glyphicon-refresh"></i></span><span class="btn-text">Refresh on</span></button>
+            <% if (type == 'out') { %>
+            <a href="err" class="btn btn-danger pull-right" style="margin-top: -50px; margin-right: 140px;">Stderr</a>
+            <% } else { %>
+            <a href="out" class="btn btn-default pull-right" style="margin-top: -50px; margin-right: 140px;">Stdout</a>
+            <% } %>
+            <pre id="log-data">
+            </pre>
             <button type="button" class="btn btn-labeled btn-danger super-action" data-action="stop"
                     data-process="<%= process %>" data-host="<%= host %>">
               <span class="btn-label"><i class="glyphicon glyphicon-minus-sign"></i></span>
@@ -27,16 +38,11 @@
               Start
             </button>
 
-            <button type="button" id="refresh-toggle" class="btn btn-labeled btn-success active pull-right"
-                    style="margin-top: -50px;"><span class="btn-label"><i
-                  class="glyphicon glyphicon-refresh"></i></span><span class="btn-text">Refresh on</span></button>
-            <% if (type == 'out') { %>
-            <a href="err" class="btn btn-danger pull-right" style="margin-top: -50px; margin-right: 140px;">Stderr</a>
-            <% } else { %>
-            <a href="out" class="btn btn-default pull-right" style="margin-top: -50px; margin-right: 140px;">Stdout</a>
-            <% } %>
-            <pre id="log-data">
-                                </pre>
+            <button type="button" class="btn btn-labeled btn-success super-action" data-action="restart"
+                    data-process="<%= process %>" data-host="<%= host %>">
+              <span class="btn-label"><i class="glyphicon glyphicon-ok"></i></span>
+              Restart
+            </button>
           </div>
         </div>
         <% } %>
