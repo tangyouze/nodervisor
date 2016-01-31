@@ -45,6 +45,13 @@ exports.ajax_supervisorctl = function (params) {
               });
             }
               break;
+            case 'stopAll':
+            {
+              supclient.stopAllProcesses(true, function () {
+                res.send({result: 'success'});
+              });
+            }
+              break;
             case 'restartAll':
             {
               supclient.stopAllProcesses(true, function () {

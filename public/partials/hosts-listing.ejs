@@ -52,6 +52,10 @@ for (state in sortedstatuses) {
 <%
 if (role == 'Admin') {
 %>
+<button type="button" data-host="<%= host.idHost %>" data-action="stopAll"
+        class="btn btn-warning btn-labeled pull-right super-action" style="margin-top: -47px; margin-right: 250px;"><span
+    class="btn-label"><i class="glyphicon glyphicon-repeat"></i></span> Stop all
+</button>
 <button type="button" data-host="<%= host.idHost %>" data-action="restartAll"
         class="btn btn-warning btn-labeled pull-right super-action" style="margin-top: -47px; margin-right: 65px;"><span
     class="btn-label"><i class="glyphicon glyphicon-repeat"></i></span> Restart all
