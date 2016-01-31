@@ -1,7 +1,7 @@
 <%= include header.ejs %>
 <%= include menu.ejs %>
-<div class="container">
-  <div class="main-container container">
+<div class="container-fluid">
+  <div class="main-container container-fluid">
     <div class="main wrapper clearfix">
 
       <article id="log-display">
@@ -12,7 +12,7 @@
         </div>
         <% } else { %>
         <div class="row">
-          <div class="col-md-12">
+          <div class="col-md-10 col-md-offset-1">
             <h3><%= data.host.Name + ' - ' + process + ' (Std' + type + ')' %></h3>
 
 

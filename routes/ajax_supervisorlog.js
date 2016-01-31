@@ -14,7 +14,7 @@ exports.ajax_supervisorlog = function(params) {
 			var host = req.param('host');
 			var process = req.param('process');
 			var offset = parseInt(req.param('offset'), 10);
-			var length = 16384;
+			var length = 163840;
 
 			if (config.hosts[host] !== undefined) {
 				var supclient = supervisordapi.connect(config.hosts[host].Url);
